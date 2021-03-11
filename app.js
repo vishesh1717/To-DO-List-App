@@ -105,16 +105,6 @@ app.post("/", function(req, res){
   }
 });
 
-
-//   if (req.body.list === "Work") {
-//     workItems.push(item);
-//     res.redirect("/work");
-//   } else {
-//     items.push(item);
-//     res.redirect("/");
-//   }
-// });
-
 app.post("/delete",function(req,res){
   const checkedItemId=req.body.checkbox;
   const listName=req.body.listName;
@@ -138,16 +128,14 @@ app.post("/delete",function(req,res){
 })
 
 
-
-// app.get("/work", function(req,res){
-//   res.render("list", {listTitle: "Work List", newListItems: items});
-// });
-
 app.get("/about", function(req, res){
   res.render("about");
 });
-
-app.listen(3000, function() {
+let port=process.env.PORT;
+if(port== null || port ==""){
+  port=3000;
+}
+app.listen(port, function() {
   console.log("Server started on port 3000");
 });
  
